@@ -7,7 +7,7 @@ export class Sport {
   id: number;
 
   @Column()
-  name: string;
+  name: string;  // e.g., "Basketball", "Football"
 
   @Column()
   description: string;

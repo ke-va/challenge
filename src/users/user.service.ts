@@ -10,19 +10,28 @@ export class UserService {
     private userRepository: Repository<User>,
   ) {}
 
+  // Fetch all users
   findAll(): Promise<User[]> {
     return this.userRepository.find();
   }
 
+  // Find user by ID
   findOne(id: number): Promise<User> {
     return this.userRepository.findOneBy({ id });
   }
 
+  // Create new user
   create(user: User): Promise<User> {
     return this.userRepository.save(user);
   }
 
+  // Delete user by ID
   async remove(id: number): Promise<void> {
     await this.userRepository.delete(id);
+  }
+
+  // Find user by email (for login)
+  findByEmail(email: string): Promise<User> {
+    return this.userRepository.findOneBy({ email });
   }
 }
