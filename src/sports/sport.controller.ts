@@ -1,7 +1,9 @@
 import { Controller, Get, Post, Param, Body, Delete, Put } from '@nestjs/common';
 import { SportService } from './sport.service';
 import { Sport } from './sport.entity';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('sports')
 @Controller('sports')
 export class SportController {
   constructor(private readonly sportService: SportService) {}

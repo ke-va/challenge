@@ -12,6 +12,7 @@ export class ClassService {
 
   // Fetch all classes
   findAll(): Promise<Class[]> {
+    console.log
     return this.classRepository.find();
   }
 
@@ -33,5 +34,18 @@ export class ClassService {
   // Delete class
   async remove(id: number): Promise<void> {
     await this.classRepository.delete(id);
+  }
+  
+  async filterClasses(sports: string[]): Promise<Class[]> {
+    // Check if sports are provided in the query
+    // if (!sports || sports.length === 0) {
+    // }
+    
+    return await this.classRepository.find(); // Return all classes if no filter is applied
+    // Use TypeORM to filter sports classes by the sports array
+    // return this.classRepository
+    //   .createQueryBuilder('sportsClass')
+    //   .where('sportsClass.sport IN (:...sports)', { sports })
+    //   .getMany();
   }
 }

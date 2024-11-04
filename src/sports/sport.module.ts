@@ -8,5 +8,6 @@ import { SportController } from './sport.controller';
   imports: [TypeOrmModule.forFeature([Sport])],
   providers: [SportService],
   controllers: [SportController],
+  exports: [SportService]
 })
 export class SportModule {}

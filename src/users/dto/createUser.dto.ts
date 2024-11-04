@@ -1,23 +1,14 @@
-import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
-import { Enrollment } from 'src/enrollments/enrollment.entity';
 import { ApiProperty } from '@nestjs/swagger';
 import { IsEmail, IsNotEmpty, MinLength } from '@nestjs/class-validator';
+import { Enrollment } from 'src/enrollments/enrollment.entity';
 
-@Entity('users')
-export class User {
-  @ApiProperty({
-    example: 1,
-    required: true,
-    readOnly: true
-  })
-  @PrimaryGeneratedColumn()
+export class CreateUserDto {
   id: number;
 
   @ApiProperty({
     example: 'ivan kovac',
     required: true
   })
-  @Column()
   name: string;
 
   @ApiProperty({
@@ -25,7 +16,6 @@ export class User {
   required: true
   })
   @IsEmail()
-  @Column({ unique: true })
   email: string;
 
   @ApiProperty({
@@ -34,20 +24,17 @@ export class User {
   })
   @IsNotEmpty()
   @MinLength(4)
-  @Column()
   password: string;
 
   @ApiProperty({
     example: "admin|user",
     default: 'user'
   })
-  @Column({ default: 'user' })
-  roles: string;  // 'user' or 'admin'
+  roles: string;
 
   @ApiProperty({
     example: "list of enrollments",
     default: []
   })
-  @OneToMany(() => Enrollment, (enrollment) => enrollment.user)
   enrollments: Enrollment[];
 }

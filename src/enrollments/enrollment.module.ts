@@ -1,15 +1,16 @@
-import { Entity, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
-import { User } from 'src/users/user.entity';
+import { Module } from '@nestjs/common';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { Enrollment } from './enrollment.entity';
+import { EnrollmentService } from './enrollment.service';
+import { EnrollmentController } from './enrollment.controller';
+import { UserService } from 'src/users/user.service';
+import { ClassService } from 'src/classes/class.service';
 import { Class } from 'src/classes/class.entity';
+import { User } from 'src/users/user.entity';
 
-@Entity('enrollments')
-export class Enrollment {
-  @PrimaryGeneratedColumn()
-  id: number;
-
-  @ManyToOne(() => User, (user) => user.enrollments)
-  user: User;
-
-  @ManyToOne(() => Class, (sportClass) => sportClass.enrollments)
-  class: Class;
-}
+@Module({
+  imports: [TypeOrmModule.forFeature([Enrollment, Class, User])],
+  providers: [EnrollmentService, UserService, ClassService],
+  controllers: [EnrollmentController],
+})
+export class EnrollmentModule {}
