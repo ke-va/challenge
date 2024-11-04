@@ -47,7 +47,7 @@ export class ClassController {
     return this.classService.remove(id);
   }
 
-  @Get('/finByFilter')
+  @Get('/filter')
   async getClasses(@Query() data: FilterClassDto) {
     console.log('tu san')
     // Split the data query into an array (if provided)

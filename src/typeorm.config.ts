@@ -8,9 +8,9 @@ export const typeOrmConfig: TypeOrmModuleOptions = {
   type: 'postgres', // or 'mysql', etc.
   host: 'localhost',
   port: 5432, // Change if using a different port
-  username: 'keva',
-  password: 'limun',
-  database: 'testdb',
+  username: process.env.DB_USERNAME,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
   entities: [User, Sport, Class, Enrollment],
   synchronize: false, // Set this to false to avoid auto-syncing database schema
   migrations: ['dist/migrations/*.js']

@@ -26,10 +26,19 @@
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
-## Project setup
+## Clone repository
 
 ```bash
-$ npm install
+git clone git@github.com:ke-va/challenge.git
+cp .env.exammple .env
+```
+## Setup environment
+Edit `.env` and fill out required variables.
+
+## Installation
+
+```bash
+npm install
 ```
 
 ## Compile and run the project
