@@ -36,7 +36,6 @@ export class AuthService {
 
   // Login the user and return the JWT token
   async login(user: any) {
-    console.log('servis', process.env.JWT_SECRET)
     const payload = { email: user.email, role: user.role };
     return {
         access_token: this.jwtService.sign(payload, { secret: 'secretsecretsecret' }),

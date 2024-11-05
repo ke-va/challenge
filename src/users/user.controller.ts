@@ -26,7 +26,6 @@ export class UserController {
   @Get(':id')
   @ApiResponse({ status: 200, description: 'User have been successfully found.', type: User})
   findOne(@Param('id') id: number, @Req() req: RequestWithUser): Promise<User> {
-    console.log(req.user)
     return this.userService.findOne(id);
   }
 

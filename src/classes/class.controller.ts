@@ -22,7 +22,6 @@ export class ClassController {
   @Get(':id')
   @ApiResponse({ status: 200, description: 'Class have been successfully reached.', type: Class})
   findOne(@Param('id') id: number, @Req() req: RequestWithUser): Promise<Class> {
-    console.log(req.user)
     return this.classService.findOne(id);
   }
 
@@ -49,7 +48,6 @@ export class ClassController {
 
   @Get('/filter')
   async getClasses(@Query() data: FilterClassDto) {
-    console.log('tu san')
     // Split the data query into an array (if provided)
     const dataArray = data.sports ? data.sports.split(',') : [];
 

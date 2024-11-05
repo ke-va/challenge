@@ -19,14 +19,12 @@ export class AuthController {
   @Post('login')
   @ApiResponse({ status: 200, description: 'User is logged in' })
   async login(@Body() userData: LoginDto, @Req() request: Request) {
-    console.log('ty san')
     const user = await this.authService.validateUser(userData.email, userData.password);
     if (!user) {
       throw new UnauthorizedException('Invalid credentials');
     }
 
     request['user'] = user
-    console.log('kontroler', process.env.JWT_SECRET_KEY)
     return this.authService.login(user);
   }
 }

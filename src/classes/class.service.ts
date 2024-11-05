@@ -12,7 +12,6 @@ export class ClassService {
 
   // Fetch all classes
   findAll(): Promise<Class[]> {
-    console.log
     return this.classRepository.find();
   }
 
